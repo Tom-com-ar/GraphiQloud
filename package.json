@@ -1,0 +1,14 @@
+{
+  "name": "graphiqloud",
+  "version": "1.0.0",
+  "scripts": {
+    "users": "nodemon subgraphs/users/index.js",
+    "products": "nodemon subgraphs/products/index.js",
+    "gateway": "nodemon gateway/index.js",
+    "dev": "concurrently \"npm run users\" \"npm run products\" \"npm run gateway\""
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.14"
+  }
+}
