@@ -1,3 +1,8 @@
+const {
+  userLoader,
+  productLoader,
+} = require("./loader");
+
 const orders = [
   {
     id: "1",
@@ -16,6 +21,16 @@ const orders = [
 const resolvers = {
   Query: {
     orders: () => orders,
+  },
+
+  Order: {
+    user: async (order) => {
+      return userLoader.load(order.userId);
+    },
+
+    product: async (order) => {
+      return productLoader.load(order.productId);
+    },
   },
 };
 
