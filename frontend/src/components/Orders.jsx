@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 import { useQuery } from "@apollo/client/react";
 
-const GET_ORDERS = gql`
-  query {
+export const GET_ORDERS = gql`
+  query GetOrders {
     orders {
       id
       quantity
@@ -20,34 +20,50 @@ const GET_ORDERS = gql`
 `;
 
 function Orders() {
-  const { loading, error, data } = useQuery(GET_ORDERS);
+    const { loading, error, data } = useQuery(GET_ORDERS);
 
-  if (loading) return <p>Cargando...</p>;
+    if (loading) return <p>Cargando...</p>;
 
-  if (error) return <p>Error: {error.message}</p>;
+    if (error) return <p>Error: {error.message}</p>;
 
-  return (
-    <div>
-      <h2>Órdenes</h2>
+    return (
+        <div>
+            <h2 style={{ marginBottom: "20px" }}>
+                Órdenes Registradas
+            </h2>
 
-      {data.orders.map((order) => (
-        <div
-          key={order.id}
-          style={{
-            border: "1px solid #ccc",
-            padding: "10px",
-            marginBottom: "10px",
-          }}
-        >
-          <p>Orden #{order.id}</p>
-          <p>Usuario: {order.user.name}</p>
-          <p>Producto: {order.product.name}</p>
-          <p>Cantidad: {order.quantity}</p>
-          <p>Precio: ${order.product.price}</p>
+            <div className="orders-grid">
+                {data?.orders?.map((order) => (
+                    <div
+                        key={order.id}
+                        className="order-card"
+                    >
+                        <h3>Orden #{order.id}</h3>
+
+                        <p>
+                            <strong>Usuario:</strong>{" "}
+                            {order.user?.name || "No encontrado"}
+                        </p>
+
+                        <p>
+                            <strong>Producto:</strong>{" "}
+                            {order.product?.name || "No encontrado"}
+                        </p>
+
+                        <p>
+                            <strong>Precio:</strong> $
+                            {order.product?.price || 0}
+                        </p>
+
+                        <p>
+                            <strong>Cantidad:</strong>{" "}
+                            {order.quantity}
+                        </p>
+                    </div>
+                ))}
+            </div>
         </div>
-      ))}
-    </div>
-  );
+    );  
 }
 
 export default Orders;
