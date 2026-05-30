@@ -27,6 +27,14 @@ const typeDefs = gql`
   type Query {
     orders: [Order]
   }
+
+  type Mutation {
+    createOrder(
+      userId: ID!
+      productId: ID!
+      quantity: Int!
+    ): Order
+  }
 `;
 
 module.exports = typeDefs;
