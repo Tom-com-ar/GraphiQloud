@@ -15,6 +15,10 @@ async function startGateway() {
           name: "products",
           url: "http://localhost:4002",
         },
+        {
+        name: "orders",
+        url: "http://localhost:4003",
+        },
       ],
     }),
   });

@@ -4,8 +4,9 @@
   "scripts": {
     "users": "nodemon subgraphs/users/index.js",
     "products": "nodemon subgraphs/products/index.js",
+    "orders": "nodemon subgraphs/orders/index.js",
     "gateway": "nodemon gateway/index.js",
-    "dev": "concurrently \"npm run users\" \"npm run products\" \"npm run gateway\""
+    "dev": "concurrently \"npm run users\" \"npm run products\" \"npm run orders\" \"npm run gateway\""
   },
   "dependencies": {
     "concurrently": "^9.2.1",
