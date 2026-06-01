@@ -2,6 +2,7 @@ import CreateUser from "./components/CreateUser";
 import CreateProduct from "./components/CreateProduct";
 import CreateOrder from "./components/CreateOrder";
 import Orders from "./components/Orders";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -11,7 +12,10 @@ function App() {
       <p className="subtitle">
         Plataforma de gestión de órdenes utilizando GraphQL,
         Apollo Federation y React.
+
       </p>
+
+      <Dashboard />
 
       <div className="card">
         <CreateUser />
@@ -26,6 +30,7 @@ function App() {
       </div>
 
       <Orders />
+
     </div>
   );
 }
